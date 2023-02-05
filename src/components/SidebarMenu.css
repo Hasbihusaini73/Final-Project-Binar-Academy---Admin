@@ -1,0 +1,49 @@
+/* Start of SidebarMenu CSS */
+
+#sidebar-menu .left-side {
+  background-color: #0d28a6;
+  height: 100vh;
+  padding: 0px;
+}
+
+#sidebar-menu .left-side .logo-box {
+  width: 34px;
+  height: 34px;
+  background-color: #cfd4ed;
+  margin: 18px;
+}
+
+#sidebar-menu .left-side a {
+  transition: 0.3s ease;
+}
+
+#sidebar-menu .left-side .active-menu,
+#sidebar-menu .left-side .sidebar-link:hover {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px 3.5px 10px 3.5px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#sidebar-menu .left-side .sidebar-link {
+  font-family: "Arial";
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px 3.5px 10px 3.5px;
+}
+
+#sidebar-menu .left-side p {
+  margin-bottom: 0px;
+}
+
+/* End of SidebarMenu CSS */
