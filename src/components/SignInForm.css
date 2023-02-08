@@ -1,0 +1,59 @@
+/* Start of Component Sign In Form CSS */
+
+#componentSignInForm .alertBox {
+  padding: 12px 25px;
+  background: rgba(208, 12, 26, 0.1);
+  border-radius: 5px;
+  margin-bottom: 32px;
+}
+
+#componentSignInForm .alertBox p {
+  font-family: "Arial";
+  font-size: 12px;
+  line-height: 18px;
+  color: #d00c1a;
+  margin-bottom: 0px;
+}
+
+#componentSignInForm #signInForm label {
+  font-family: "Arial";
+  font-size: 14px;
+  line-height: 20px;
+  color: #222222;
+}
+
+#componentSignInForm #signInForm input {
+  padding: 10px 15px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+#componentSignInForm #signInForm input::placeholder {
+  font-family: "Arial";
+  font-size: 12px;
+  line-height: 18px;
+  color: #c7c7c7;
+}
+#componentSignInForm #signInForm input:focus {
+  box-shadow: 0 0 20px -5px rgb(0 0 0 / 25%);
+}
+
+#componentSignInForm #signInForm .signInSubmit {
+  background: #0d28a6;
+  border-radius: 2px;
+  width: 100%;
+  text-align: center;
+  padding: 8px 12px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  transition: 0.3s ease;
+}
+#componentSignInForm #signInForm .signInSubmit:hover {
+  background: #5974ec;
+}
+
+/* End of Component Sign In Form CSS */

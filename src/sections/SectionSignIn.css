@@ -1,0 +1,38 @@
+/* Start of Section Sign In CSS */
+
+#sectionSignIn .heroContainer {
+  min-height: 100vh;
+  background-image: url("../assets/img/image 2.png");
+  background-size: cover;
+  background-color: #0d28a6;
+}
+
+#sectionSignIn .signInContainer {
+  padding: 0 56px;
+}
+
+#sectionSignIn .signInContainer .logoBox {
+  width: 100px;
+  height: 34px;
+  background-color: #cfd4ed;
+  margin-bottom: 32px;
+}
+
+#sectionSignIn .signInContainer .signInTitle {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  color: #000000;
+  margin-bottom: 32px;
+}
+
+@media only screen and (max-width: 992px) {
+  #sectionSignIn .signInContainer {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* End of Section Sign In CSS */
