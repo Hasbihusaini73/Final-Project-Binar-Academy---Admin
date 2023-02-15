@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./DashboardPage.css";
 import SectionBarGraph from "../sections/SectionBarGraph";
 import ChevronRight from "../assets/img/chevron-right.png";
+import SectionOrderTable from "../sections/SectionOrderTable";
 
 const DashboardPage = () => {
   let activeClassName = "menuItemActive";
@@ -23,6 +24,7 @@ const DashboardPage = () => {
               <h4 className="breadcrumbCurrent">Dashboard</h4>
             </div>
             <SectionBarGraph />
+            <SectionOrderTable />
           </div>
         </div>
       </div>

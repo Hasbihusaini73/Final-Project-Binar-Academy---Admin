@@ -39,7 +39,7 @@ const BarGraph = (dataReport) => {
             <div className="titleAreaBarGraph">
               <h5 className="titleBarGraph">Amount of Car Rented</h5>
             </div>
-            <div className="barGraphArea">
+            <div className="barGraphArea flex-fill">
               <Bar options={options} data={data} className="barGraph" />
             </div>
           </div>

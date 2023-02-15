@@ -1,21 +1,17 @@
-/* Start of Section Bar Graph In CSS */
+/* Start of Section Order Table In CSS */
 
-#sectionBarGraph {
-  margin-bottom: 84px;
-}
-
-#sectionBarGraph .row > .col-lg-12 {
+#sectionOrderTable .row > .col-lg-12 {
   padding: 0px;
 }
 
-#sectionBarGraph .titleArea {
+#sectionOrderTable .titleArea {
   height: 24px;
   border-left: solid 4px #0d28a6;
   padding: 0 8px;
   margin-bottom: 18px;
 }
 
-#sectionBarGraph .titleArea .titleText {
+#sectionOrderTable .titleArea .titleText {
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
@@ -25,7 +21,17 @@
   margin-bottom: 0px;
 }
 
-#sectionBarGraph .formTitle {
+#sectionOrderTable .orderTableTitle {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+#sectionOrderTable .formTitle {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -35,11 +41,17 @@
   margin-bottom: 8px;
 }
 
-#sectionBarGraph #monthFilterForm {
+#sectionOrderTable #orderFilterForm {
+  margin-top: 16px;
   margin-bottom: 54px;
 }
 
-#sectionBarGraph #monthFilterForm .monthInput {
+#sectionOrderTable #orderFilterForm .limitSide {
+  margin-right: 24px;
+}
+
+#sectionOrderTable #orderFilterForm .limitInput,
+#sectionOrderTable #orderFilterForm .jumpInput {
   width: 122px;
   height: 38px;
   padding: 9px 12px;
@@ -55,19 +67,12 @@
   position: relative;
 }
 
-#sectionBarGraph #monthFilterForm .monthInput:focus {
+#sectionOrderTable #orderFilterForm .limitInput:focus,
+#sectionOrderTable #orderFilterForm .jumpInput:focus {
   box-shadow: 0 0 20px -5px rgb(0 0 0 / 25%);
 }
 
-#sectionBarGraph #monthFilterForm .monthInput::-webkit-calendar-picker-indicator {
-  padding-left: 100px;
-  position: absolute;
-  top: 9px;
-  right: 5px;
-  cursor: pointer;
-}
-
-#sectionBarGraph #monthFilterForm .submitButton {
+#sectionOrderTable #orderFilterForm .submitButton {
   background: #0d28a6;
   border-radius: 0px 2px 2px 0px;
   text-align: center;
@@ -80,8 +85,8 @@
   color: #fff;
   transition: 0.3s ease;
 }
-#sectionBarGraph #monthFilterForm .submitButton:hover {
+#sectionOrderTable #orderFilterForm .submitButton:hover {
   background: #5974ec;
 }
 
-/* End of Section Bar Graph In CSS */
+/* END of Section Order Table In CSS */
