@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import "./OrderTable.css";
 import sortIcon from "../assets/img/fi_sort.png";
 
-const OrderTable = () => {
+const OrderTable = (orderData) => {
+  const orderDatas = orderData.orderData;
+  console.log(orderDatas);
+
   return (
     <div id="componentOrderTable">
       <div className="container-fluid">
@@ -64,23 +67,17 @@ const OrderTable = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                {orderDatas?.map((order, index) => (
+                  <tr key={index}>
+                    <td>{index}</td>
+                    <td>{order.User.email}</td>
+                    <td>{order.Car.name}</td>
+                    <td>{order.start_rent_at.substring(0, 10)}</td>
+                    <td>{order.finish_rent_at.substring(0, 10)}</td>
+                    <td>{order.total_price}</td>
+                    <td>{order.Car.category}</td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </div>
