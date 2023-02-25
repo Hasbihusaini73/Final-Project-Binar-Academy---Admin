@@ -69,7 +69,7 @@ const OrderTable = (orderData) => {
               <tbody>
                 {orderDatas?.map((order, index) => (
                   <tr key={index}>
-                    <td>{index}</td>
+                    <td>{index + 1}</td>
                     <td>{order.User.email}</td>
                     <td>{order.Car !== null ? order.Car.name : "Car telah Dihapus"}</td>
                     <td>{order.start_rent_at.substring(0, 10)}</td>
