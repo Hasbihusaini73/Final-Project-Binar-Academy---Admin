@@ -8,12 +8,12 @@ const SidebarMenu = () => {
   let activeClassName = "active-menu";
   const menuItem = [
     {
-      path: "/",
+      path: "/dashboard",
       name: "Dashboard",
       icon: iconDashboard,
     },
     {
-      path: "/listcars",
+      path: "/listcar",
       name: "Cars",
       icon: iconCars,
     },

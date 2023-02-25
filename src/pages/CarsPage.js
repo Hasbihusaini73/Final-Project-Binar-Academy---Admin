@@ -1,30 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./DashboardPage.css";
-import SectionBarGraph from "../sections/SectionBarGraph";
+import "./CarsPage.css";
+import SectionListCar from "../sections/SectionListCar";
 import ChevronRight from "../assets/img/chevron-right.png";
-import SectionOrderTable from "../sections/SectionOrderTable";
 
-const DashboardPage = () => {
+const CarsPage = () => {
   let activeClassName = "menuItemActive";
   return (
-    <main id="pageDashboard">
+    <main id="pageCars">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 leftSidebar">
-            <h2 className="pageTitle">DASHBOARD</h2>
+            <h2 className="pageTitle">CARS</h2>
             <NavLink to="#dashboard" className={({ isActive }) => (isActive ? activeClassName : "menuItem")}>
-              Dashboard
+              List Car
             </NavLink>
           </div>
           <div className="col-lg-10 rightContent">
             <div className="breadcrumb d-flex align-items-center">
-              <h4 className="breadcrumbRoot">Dashboard</h4>
+              <h4 className="breadcrumbRoot">Cars</h4>
               <img src={ChevronRight} className="breadcrumbArrow img-fluid" alt="Breadcrumb Arrow"></img>
-              <h4 className="breadcrumbCurrent">Dashboard</h4>
+              <h4 className="breadcrumbCurrent">list Car</h4>
             </div>
-            <SectionBarGraph />
-            <SectionOrderTable />
+            <SectionListCar />
           </div>
         </div>
       </div>
@@ -32,4 +30,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default CarsPage;

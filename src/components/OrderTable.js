@@ -5,7 +5,7 @@ import sortIcon from "../assets/img/fi_sort.png";
 
 const OrderTable = (orderData) => {
   const orderDatas = orderData.orderData;
-  console.log(orderDatas);
+  // console.log(orderDatas); check isi order data yang telah dilempar
 
   return (
     <div id="componentOrderTable">
