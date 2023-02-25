@@ -5,12 +5,50 @@ import OrderTable from "../components/OrderTable";
 import "./SectionOrderTable.css";
 
 const SectionOrderTable = () => {
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  /*deklarasi variable*/
   const [orderData, setOrderData] = useState();
   const [pageCount, setPageCount] = useState();
   const [fetchDone, setFetchDone] = useState(false);
 
+  const initialValues = {
+    page: 1,
+    pageSize: 10,
+  };
+
+  const [values, setValues] = useState(initialValues);
+
+  const handleInputChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+    console.log(values);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFetchDone(false);
+    const urlAPI = "https://bootcamp-rent-cars.herokuapp.com";
+    const config = {
+      headers: {
+        access_token: JSON.parse(localStorage.getItem("accessToken")),
+      },
+    };
+
+    axios
+      .get(`${urlAPI}/admin/v2/order?sort=created_at%3Adesc&page=${values.page}&pageSize=${values.pageSize}`, config)
+      .then((res) => {
+        const tempOrders = res.data;
+        setOrderData(tempOrders.orders);
+        setFetchDone(true);
+        console.log(tempOrders);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  /*loop untuk item pagination*/
   let active = 1;
   let items = [];
   for (let number = 1; number <= 3; number++) {
@@ -18,6 +56,26 @@ const SectionOrderTable = () => {
       <Pagination.Item key={number} active={number === active}>
         {number}
       </Pagination.Item>
+    );
+  }
+
+  /*loop untuk select limit*/
+  let limitOptions = [];
+  for (let numLimit = 1; numLimit <= 11; numLimit++) {
+    limitOptions.push(
+      <option key={numLimit} value={numLimit + 9}>
+        {numLimit + 9}
+      </option>
+    );
+  }
+
+  /*loop untuk select jump page*/
+  let jumpOptions = [];
+  for (let numJump = 1; numJump <= pageCount; numJump++) {
+    jumpOptions.push(
+      <option key={numJump} value={numJump}>
+        {numJump}
+      </option>
     );
   }
 
@@ -30,17 +88,17 @@ const SectionOrderTable = () => {
     };
 
     axios
-      .get(`${urlAPI}/admin/v2/order?sort=created_at%3Adesc&page=${page}&pageSize=${pageSize}`, config)
+      .get(`${urlAPI}/admin/v2/order?sort=created_at%3Adesc&page=1&pageSize=10`, config)
       .then((res) => {
         const tempOrders = res.data;
         setOrderData(tempOrders.orders);
+        setPageCount(tempOrders.pageCount);
         setFetchDone(true);
-        console.log(tempOrders);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [page, pageSize]);
+  }, []);
 
   return (
     <section id="sectionOrderTable">
@@ -54,18 +112,22 @@ const SectionOrderTable = () => {
             {fetchDone && <OrderTable orderData={orderData} />}
             <div className="navigationFooter row justify-content-between align-items-end">
               <div className="col-lg-6 d-flex justify-content-start leftSide">
-                <Form id="orderFilterForm" className="d-flex justify-content-start">
+                <Form id="orderFilterForm" className="d-flex justify-content-start" onSubmit={handleSubmit}>
                   <div className="limitSide">
                     <h5 className="formTitle">Limit</h5>
                     <Form.Group>
-                      <Form.Control required name="limitInput" id="limitInput" className="limitInput" type="month" as="input" placeholder="Pilih Limit" />
+                      <Form.Select required name="pageSize" id="pageSize" className="limitInput" placeholder="Pilih Limit" onChange={handleInputChange}>
+                        {limitOptions}
+                      </Form.Select>
                     </Form.Group>
                   </div>
                   <div className="jumpSide">
                     <h5 className="formTitle">Jump to page</h5>
                     <div className="d-flex">
                       <Form.Group>
-                        <Form.Control required name="jumpInput" id="jumpInput" className="jumpInput" type="month" as="input" placeholder="Pilih Jump" />
+                        <Form.Select required name="page" id="page" className="jumpInput" placeholder="Pilih Jump" onChange={handleInputChange}>
+                          {jumpOptions}
+                        </Form.Select>
                       </Form.Group>
                       <Button className="submitButton" type="submit">
                         Go

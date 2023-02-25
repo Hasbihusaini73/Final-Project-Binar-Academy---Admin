@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Table } from "react-bootstrap";
 import "./OrderTable.css";
 import sortIcon from "../assets/img/fi_sort.png";
@@ -71,11 +71,11 @@ const OrderTable = (orderData) => {
                   <tr key={index}>
                     <td>{index}</td>
                     <td>{order.User.email}</td>
-                    <td>{order.Car.name}</td>
+                    <td>{order.Car !== null ? order.Car.name : "Car telah Dihapus"}</td>
                     <td>{order.start_rent_at.substring(0, 10)}</td>
                     <td>{order.finish_rent_at.substring(0, 10)}</td>
                     <td>{order.total_price}</td>
-                    <td>{order.Car.category}</td>
+                    <td>{order.Car !== null ? order.Car.category : "Car telah Dihapus"}</td>
                   </tr>
                 ))}
               </tbody>
