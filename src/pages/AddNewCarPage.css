@@ -1,27 +1,20 @@
-/* Start of Page Cars In CSS */
+/* Start of Page Add New Car In CSS */
 
-#pageCars {
+#pageAddNewCar {
   background: #f4f5f7;
 }
 
-#pageCars .leftSidebar {
+#pageAddNewCar .leftSidebar {
   background: #fff;
   padding: 35px 0px;
   min-height: calc(100vh - 70px);
 }
 
-#pageCars .rightContent {
+#pageAddNewCar .rightContent {
   padding: 32px 25px;
-  position: relative;
 }
 
-#pageCars .rightContent .addNewToast {
-  position: absolute;
-  top: 30px;
-  width: 100%;
-}
-
-#pageCars .leftSidebar .pageTitle {
+#pageAddNewCar .leftSidebar .pageTitle {
   padding: 0px 24px;
   font-family: "Arial";
   font-style: normal;
@@ -31,7 +24,7 @@
   color: #8a8a8a;
 }
 
-#pageCars .leftSidebar .menuItem {
+#pageAddNewCar .leftSidebar .menuItem {
   width: 100%;
   display: block;
   padding: 11px 24px;
@@ -46,10 +39,10 @@
   text-decoration: none;
   transition: 0.3s ease;
 }
-#pageCars .leftSidebar .menuItem:hover {
+#pageAddNewCar .leftSidebar .menuItem:hover {
   background: #cfd4ed;
 }
-#pageCars .leftSidebar .menuItemActive {
+#pageAddNewCar .leftSidebar .menuItemActive {
   width: 100%;
   display: block;
   padding: 11px 24px;
@@ -63,15 +56,15 @@
   text-decoration: none;
   transition: 0.3s ease;
 }
-#pageCars .leftSidebar .menuItemActive:hover {
+#pageAddNewCar .leftSidebar .menuItemActive:hover {
   color: #140085;
 }
 
-#pageCars .rightContent .breadcrumb {
+#pageAddNewCar .rightContent .breadcrumb {
   margin-bottom: 27px;
 }
 
-#pageCars .rightContent .breadcrumb .breadcrumbRoot {
+#pageAddNewCar .rightContent .breadcrumb .breadcrumbRoot {
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
@@ -82,13 +75,13 @@
   margin-bottom: 0px;
 }
 
-#pageCars .rightContent .breadcrumb .breadcrumbArrow {
+#pageAddNewCar .rightContent .breadcrumb .breadcrumbArrow {
   width: 16px;
   height: 16px;
   margin-right: 4px;
 }
 
-#pageCars .rightContent .breadcrumb .breadcrumbCurrent {
+#pageAddNewCar .rightContent .breadcrumb .breadcrumbCurrent {
   font-family: "Rubik";
   font-style: normal;
   font-weight: 300;
@@ -98,4 +91,4 @@
   margin-bottom: 0px;
 }
 
-/* End of Page Cars In CSS */
+/* End of Page Add New Car In CSS */

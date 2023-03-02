@@ -5,6 +5,7 @@ import RenderLayout from "./RenderLayout";
 import SignInPage from "../pages/SignInPage";
 import DashboardPage from "../pages/DashboardPage";
 import CarsPage from "../pages/CarsPage";
+import AddNewCarPage from "../pages/AddNewCarPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -12,6 +13,7 @@ export const router = createBrowserRouter(
       <Route exact path="/" element={<PublicRoute Children={<RenderLayout Children={<SignInPage />} />} />} />
       <Route exact path="/dashboard" element={<PrivateRoute Children={<AdminLayout Children={<DashboardPage />} />} />} />
       <Route exact path="/listcar" element={<PrivateRoute Children={<AdminLayout Children={<CarsPage />} />} />} />
+      <Route exact path="/listcar/addnewcar" element={<PrivateRoute Children={<AdminLayout Children={<AddNewCarPage />} />} />} />
     </>
   )
 );

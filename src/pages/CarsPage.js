@@ -1,22 +1,66 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCars } from "../redux/carSlice";
+import axios from "axios";
 import "./CarsPage.css";
 import SectionListCar from "../sections/SectionListCar";
 import ChevronRight from "../assets/img/chevron-right.png";
+import AddNewNotification from "../components/AddNewNotification";
 
 const CarsPage = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const [addNewStatus, setAddNewStatus] = useState(false);
   let activeClassName = "menuItemActive";
+
+  useEffect(() => {
+    if (location.state !== null) {
+      if ("statusAdd" in location.state) {
+        setAddNewStatus(location.state.statusAdd);
+        setTimeout(() => {
+          setAddNewStatus(false);
+        }, 5000);
+      }
+    }
+  }, [location.state]);
+
+  useEffect(() => {
+    //get data from api
+    const urlAPI = "https://bootcamp-rent-cars.herokuapp.com";
+    const config = {
+      headers: {
+        access_token: JSON.parse(localStorage.getItem("accessToken")),
+      },
+    };
+
+    axios
+      .get(`${urlAPI}/admin/v2/car`, config)
+      .then(async (res) => {
+        const tempCars = await res.data.cars;
+        dispatch(setCars(tempCars));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [dispatch]);
   return (
     <main id="pageCars">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 leftSidebar">
             <h2 className="pageTitle">CARS</h2>
-            <NavLink to="#dashboard" className={({ isActive }) => (isActive ? activeClassName : "menuItem")}>
+            <NavLink to="#listcar" className={({ isActive }) => (isActive ? activeClassName : "menuItem")}>
               List Car
             </NavLink>
           </div>
           <div className="col-lg-10 rightContent">
+            {addNewStatus ? (
+              <div className="addNewToast">
+                <AddNewNotification />
+              </div>
+            ) : null}
+
             <div className="breadcrumb d-flex align-items-center">
               <h4 className="breadcrumbRoot">Cars</h4>
               <img src={ChevronRight} className="breadcrumbArrow img-fluid" alt="Breadcrumb Arrow"></img>

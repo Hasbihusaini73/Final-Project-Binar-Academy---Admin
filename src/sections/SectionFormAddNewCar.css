@@ -1,0 +1,68 @@
+/* Start of Section Form Add New Car In CSS */
+
+#sectionFormAddNewCar .row > .col-lg-12 {
+  padding: 0px;
+}
+
+#sectionFormAddNewCar .addNewCarTitle {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+#sectionFormAddNewCar .formBox {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+#sectionFormAddNewCar .actionArea {
+  margin-top: calc(50vh - 220px);
+}
+
+#sectionFormAddNewCar .actionArea .cancelButton {
+  margin-right: 16px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #0d28a6;
+  border-radius: 2px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0d28a6;
+  transition: 0.3s ease;
+}
+
+#sectionFormAddNewCar .actionArea .cancelButton:hover {
+  background: #0d28a6;
+  color: #fff;
+}
+
+#sectionFormAddNewCar .actionArea .submitButton {
+  padding: 8px 12px;
+  background: #0d28a6;
+  border: 1px solid #0d28a6;
+  border-radius: 2px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+#sectionFormAddNewCar .actionArea .submitButton:hover {
+  background: #5974ec;
+  border-color: #5974ec;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* End of Section Form Add New Car In CSS */

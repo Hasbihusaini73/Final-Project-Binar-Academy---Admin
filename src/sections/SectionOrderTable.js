@@ -22,7 +22,6 @@ const SectionOrderTable = () => {
       ...values,
       [e.target.name]: e.target.value,
     });
-    console.log(values);
   };
 
   const handleSubmit = (e) => {

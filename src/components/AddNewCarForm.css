@@ -1,0 +1,108 @@
+/* Start of Component Add New Car Form In CSS */
+
+.addNewCarFormContainer #addNewCarForm .inputContainer {
+  margin-bottom: 16px;
+}
+
+.addNewCarFormContainer #addNewCarForm .labelArea label {
+  margin-bottom: 0px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #3c3c3c;
+}
+.addNewCarFormContainer #addNewCarForm .labelArea label sup {
+  color: #fa2c5a;
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea input {
+  padding: 9px 12px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea input:focus {
+  box-shadow: 0 0 20px -5px rgb(0 0 0 / 25%);
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea input::placeholder {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8a8a8a;
+}
+
+/* styling for input type file*/
+.addNewCarFormContainer #addNewCarForm .inputArea .imageInput {
+  display: none;
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea .fileInputFake {
+  padding: 9px 12px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8a8a8a;
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea .fileInputFake p {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8a8a8a;
+  margin-bottom: 0px;
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea .fileInputFake .uploadIcon {
+  width: 18px;
+  height: 18px;
+}
+/* end of styling for input type file*/
+
+.addNewCarFormContainer #addNewCarForm .inputArea select {
+  padding: 9px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea select:focus {
+  box-shadow: 0 0 20px -5px rgb(0 0 0 / 25%);
+}
+
+.addNewCarFormContainer #addNewCarForm .inputArea select::placeholder {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8a8a8a;
+}
+
+.addNewCarFormContainer #addNewCarForm .formSubmit {
+  display: none;
+}
+
+/* End of Component Add New Car Form In CSS */

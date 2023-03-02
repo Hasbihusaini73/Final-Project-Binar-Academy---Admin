@@ -1,27 +1,30 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "./CarCard.css";
-import mobilInova from "../assets/img/image 1.png";
 import userIcon from "../assets/img/fi_users.png";
 import clockIcon from "../assets/img/fi_clock.png";
 import trashIcon from "../assets/img/fi_trash-2.png";
 import editIcon from "../assets/img/fi_edit.png";
 
-const carCard = () => {
+const carCard = (dataCar) => {
+  const car = dataCar.dataCar;
+  const date = new Date(car.updatedAt);
+
   return (
     <article className="col-lg-4">
       <div className="carCard">
         <figure className="carImageContainer">
-          <img src={mobilInova} className="carImage img-fluid" alt="Car" />
+          <img src={car.image} className="carImage img-fluid" alt="Car" />
         </figure>
         <div className="carDetailContainer">
-          <h3 className="carName">Nama/Tipe Mobil</h3>
-          <p className="carPrice">Rp 500.000 / hari</p>
+          <h3 className="carName">{car.name}</h3>
+          <p className="carPrice">{car.price}</p>
           <p className="carCategory">
-            <img src={userIcon} className="carCategoryIcon" alt="Category Icon" /> 6 - 8 people
+            <img src={userIcon} className="carCategoryIcon" alt="Category Icon" /> {car.category === "small" ? "2 - 4 People" : ""} {car.category === "Medium" ? "4 - 6 People" : ""} {car.category === "large" ? "6 - 8 People" : ""}
           </p>
           <p className="carUpdate">
-            <img src={clockIcon} className="carUpdateIcon" alt="Clock Icon" /> Updated at 4 Apr 2022, 09.00
+            <img src={clockIcon} className="carUpdateIcon" alt="Clock Icon" /> Updated at {date.getDate()} {date.toLocaleString("default", { month: "long" })} {date.getFullYear()},{" "}
+            {date.toLocaleString("default", { hour: "numeric", minute: "numeric", hourCycle: "h24" })}
           </p>
         </div>
         <div className="cardActionContainer d-flex justify-content-between">
