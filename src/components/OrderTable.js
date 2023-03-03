@@ -72,8 +72,8 @@ const OrderTable = (orderData) => {
                     <td>{index + 1}</td>
                     <td>{order.User.email}</td>
                     <td>{order.Car !== null ? order.Car.name : "Car telah Dihapus"}</td>
-                    <td>{order.start_rent_at.substring(0, 10)}</td>
-                    <td>{order.finish_rent_at.substring(0, 10)}</td>
+                    <td>{order.start_rent_at !== null ? order.start_rent_at.substring(0, 10) : "Kosong Tidak Diisi"}</td>
+                    <td>{order.finish_rent_at !== null ? order.finish_rent_at.substring(0, 10) : "Kosong Tidak Diisi"}</td>
                     <td>{order.total_price}</td>
                     <td>{order.Car !== null ? order.Car.category : "Car telah Dihapus"}</td>
                   </tr>
