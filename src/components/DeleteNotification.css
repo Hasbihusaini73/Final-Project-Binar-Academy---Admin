@@ -1,0 +1,21 @@
+/* Start of Component Delete Notification In CSS */
+
+#deleteNotification .notificationContainer {
+  padding: 12px 16px;
+  background: #151515;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+#deleteNotification .notificationContainer h3 {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 0px;
+}
+
+/* End of Component Delete Notification In CSS */

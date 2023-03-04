@@ -1,26 +1,25 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./SectionFormAddNewCar.css";
-import AddNewCarForm from "../components/AddNewCarForm";
+import "./SectionFormEditCar.css";
+import EditCarForm from "../components/EditCarForm";
 
-const SectionFormAddNewCar = () => {
+const SectionFormEditCar = () => {
   const navigate = useNavigate();
 
   const handleCancelButton = () => {
     navigate("/listcar");
   };
-
   return (
-    <section id="sectionFormAddNewCar">
+    <section id="sectionFormEditCar">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-12">
             <div className="titleArea">
-              <h2 className="addNewCarTitle">Add New Car</h2>
+              <h2 className="editCarTitle">Edit Car</h2>
             </div>
             <div className="formBox">
-              <AddNewCarForm />
+              <EditCarForm />
             </div>
             <div className="actionArea d-flex justify-content-start align-items-center">
               <Button className="cancelButton" onClick={handleCancelButton}>
@@ -37,4 +36,4 @@ const SectionFormAddNewCar = () => {
   );
 };
 
-export default SectionFormAddNewCar;
+export default SectionFormEditCar;

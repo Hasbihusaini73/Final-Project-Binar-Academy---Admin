@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./AddNewCarForm.css";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./EditCarForm.css";
 import iconUpload from "../assets/img/fi_upload.png";
 
-const AddNewCarForm = () => {
+const EditCarForm = () => {
   const navigate = useNavigate();
-  const [nameInputStatus, setNameInputStatus] = useState(false);
-  const [priceInputStatus, setPriceInputStatus] = useState(false);
-  const [categoryInputStatus, setCategoryInputStatus] = useState(false);
+  const location = useLocation();
   const [imageErrorNotif, setImageErrorNotif] = useState("");
   const [imageStatus, setImageStatus] = useState(false);
-  var errorFound = false;
+  const [carCreate, setCarCreate] = useState(null);
 
   const handleUploadClick = () => {
     document.getElementById("imageInput").click();
   };
 
+  //form
   const initialValues = {
     nameInput: "",
     priceInput: 0,
@@ -27,6 +26,27 @@ const AddNewCarForm = () => {
 
   const [values, setValues] = useState(initialValues);
 
+  //populate value on first render
+  useEffect(() => {
+    const urlAPI = "https://bootcamp-rent-cars.herokuapp.com";
+    const config = {
+      headers: {
+        access_token: JSON.parse(localStorage.getItem("accessToken")),
+      },
+    };
+    axios
+      .get(`${urlAPI}/admin/car/${location.state.carId}`, config)
+      .then((res) => {
+        const tempRes = res.data;
+        setValues((values) => ({ ...values, nameInput: tempRes.name, priceInput: tempRes.price, categoryInput: tempRes.category }));
+        setCarCreate(tempRes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [location.state.carId]);
+
+  //handle change
   const handleInputChange = (e) => {
     setValues({
       ...values,
@@ -38,42 +58,19 @@ const AddNewCarForm = () => {
     setValues({ ...values, [e.target.name]: e.target.files[0] });
   };
 
+  //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    errorFound = false;
 
-    //validasi input text&price&select
-    if (values.nameInput === "") {
-      setNameInputStatus(true);
-      errorFound = true;
-    } else {
-      setNameInputStatus(false);
-    }
-
-    if (values.priceInput === 0) {
-      setPriceInputStatus(true);
-      errorFound = true;
-    } else {
-      setPriceInputStatus(false);
-    }
-
-    if (values.categoryInput === "" || values.categoryInput === "placeholder") {
-      setCategoryInputStatus(true);
-      errorFound = true;
-    } else {
-      setCategoryInputStatus(false);
-    }
-
-    //validasi Image kosong,size,filetype
     if (values.imageInput === null) {
       setImageStatus(true);
       setImageErrorNotif("Please Upload Image");
-      errorFound = true;
+      return false;
     }
     if (values.imageInput !== null && values.imageInput.size > 2097152) {
       setImageStatus(true);
       setImageErrorNotif("Image File Size is Too Big");
-      errorFound = true;
+      return false;
     }
     if (values.imageInput !== null) {
       var fname = values.imageInput.name;
@@ -81,12 +78,8 @@ const AddNewCarForm = () => {
       if (!re.exec(fname)) {
         setImageStatus(true);
         setImageErrorNotif("File type is not supported!");
-        errorFound = true;
+        return false;
       }
-    }
-
-    if (errorFound === true) {
-      return false;
     }
 
     const urlAPI = "https://bootcamp-rent-cars.herokuapp.com";
@@ -99,11 +92,11 @@ const AddNewCarForm = () => {
     data.append("name", values.nameInput);
     data.append("category", values.categoryInput);
     data.append("price", values.priceInput);
-    data.append("status", false);
+    data.append("status", carCreate.status);
     data.append("image", values.imageInput);
 
     await axios
-      .post(`${urlAPI}/admin/car`, data, config)
+      .put(`${urlAPI}/admin/car/${location.state.carId}`, data, config)
       .then(async () => {
         navigate("/listcar", { state: { statusAdd: true } });
       })
@@ -113,8 +106,8 @@ const AddNewCarForm = () => {
   };
 
   return (
-    <div className="addNewCarFormContainer">
-      <Form noValidate id="addNewCarForm" onSubmit={handleSubmit}>
+    <div className="editCarFormContainer">
+      <Form noValidate id="editCarForm" onSubmit={handleSubmit}>
         <div className="row inputContainer justify-content-start align-items-center">
           <div className="col-lg-2 labelArea">
             <Form.Label>
@@ -122,10 +115,7 @@ const AddNewCarForm = () => {
             </Form.Label>
           </div>
           <div className="col-lg-3 inputArea">
-            <Form.Group>
-              <Form.Control isInvalid={nameInputStatus} required type="input" name="nameInput" id="nameInput" className="nameInput" placeholder="Input Nama/Tipe Mobil" onChange={handleInputChange}></Form.Control>
-              <Form.Control.Feedback type="invalid">Data Tidak Boleh Kosong!</Form.Control.Feedback>
-            </Form.Group>
+            <Form.Control required type="input" name="nameInput" id="nameInput" className="nameInput" placeholder="Input Nama/Tipe Mobil" value={values.nameInput || ""} onChange={handleInputChange}></Form.Control>
           </div>
         </div>
         <div className="row inputContainer justify-content-start align-items-center">
@@ -135,10 +125,7 @@ const AddNewCarForm = () => {
             </Form.Label>
           </div>
           <div className="col-lg-3 inputArea">
-            <Form.Group>
-              <Form.Control isInvalid={priceInputStatus} required type="number" min="0" name="priceInput" id="priceInput" className="priceInput" placeholder="Input Harga Sewa Mobil" onChange={handleInputChange}></Form.Control>
-              <Form.Control.Feedback type="invalid">Silahkan isi Harga!</Form.Control.Feedback>
-            </Form.Group>
+            <Form.Control required type="number" min="0" name="priceInput" id="priceInput" className="priceInput" placeholder="Input Harga Sewa Mobil" value={values.priceInput || 0} onChange={handleInputChange}></Form.Control>
           </div>
         </div>
         <div className="row inputContainer justify-content-start align-items-center">
@@ -151,7 +138,7 @@ const AddNewCarForm = () => {
             <Form.Group>
               <Form.Control isInvalid={imageStatus} required type="file" name="imageInput" id="imageInput" className="imageInput" placeholder="Upload Foto Mobil" accept=".png, .jpg, .jpeg, .webp" onChange={handleImageChange}></Form.Control>
               <button type="button" className="fileInputFake d-flex justify-content-between align-items-center" onClick={handleUploadClick}>
-                <p>{values.imageInput ? values.imageInput.name : "Upload Foto Mobil"}</p>
+                <p>{values.imageInput ? values.imageInput.name : `Gambar ${values.nameInput}`}</p>
                 <img src={iconUpload} className="uploadIcon img-fluid" alt="Icon Upload" />
               </button>
               <Form.Text id="imageUploadHelp" muted>
@@ -168,28 +155,25 @@ const AddNewCarForm = () => {
             </Form.Label>
           </div>
           <div className="col-lg-3 inputArea">
-            <Form.Group>
-              <Form.Select isInvalid={categoryInputStatus} required name="categoryInput" id="categoryInput" className="categoryInput" placeholder="Pilih Kategori Mobil" onChange={handleInputChange}>
-                <option value="placeholder">Pilih Kategori Mobil</option>
-                <option value="small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="large">Large</option>
-              </Form.Select>
-              <Form.Control.Feedback type="invalid">Silahkan pilih kategori!</Form.Control.Feedback>
-            </Form.Group>
+            <Form.Select required name="categoryInput" id="categoryInput" className="categoryInput" placeholder="Pilih Kategori Mobil" value={values.categoryInput || "placeholder"} onChange={handleInputChange}>
+              <option value="placeholder">Pilih Kategori Mobil</option>
+              <option value="small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="large">Large</option>
+            </Form.Select>
           </div>
         </div>
         <div className="row inputContainer justify-content-start align-items-center">
           <div className="col-lg-2 labelArea">
             <Form.Label>Created at</Form.Label>
           </div>
-          <div className="col-lg-3 inputArea">-</div>
+          <div className="col-lg-3 inputArea">{carCreate !== null ? carCreate.createdAt.substring(0, 10) : "-"}</div>
         </div>
         <div className="row inputContainer justify-content-start align-items-center">
           <div className="col-lg-2 labelArea">
             <Form.Label>Updated at</Form.Label>
           </div>
-          <div className="col-lg-3 inputArea">-</div>
+          <div className="col-lg-3 inputArea">{carCreate !== null ? carCreate.updatedAt.substring(0, 10) : "-"}</div>
         </div>
         <Form.Control type="submit" name="formSubmit" id="formSubmit" className="formSubmit"></Form.Control>
       </Form>
@@ -197,4 +181,4 @@ const AddNewCarForm = () => {
   );
 };
 
-export default AddNewCarForm;
+export default EditCarForm;

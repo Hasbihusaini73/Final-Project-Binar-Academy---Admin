@@ -1,28 +1,20 @@
-/* Start of Page Cars In CSS */
+/* Start of Page Edit Car In CSS */
 
-#pageCars {
+#pageEditCar {
   background: #f4f5f7;
 }
 
-#pageCars .leftSidebar {
+#pageEditCar .leftSidebar {
   background: #fff;
   padding: 35px 0px;
   min-height: calc(100vh - 70px);
 }
 
-#pageCars .rightContent {
+#pageEditCar .rightContent {
   padding: 32px 25px;
-  position: relative;
 }
 
-#pageCars .rightContent .addNewToast {
-  position: absolute;
-  top: 30px;
-  width: 100%;
-  z-index: 999;
-}
-
-#pageCars .leftSidebar .pageTitle {
+#pageEditCar .leftSidebar .pageTitle {
   padding: 0px 24px;
   font-family: "Arial";
   font-style: normal;
@@ -32,7 +24,7 @@
   color: #8a8a8a;
 }
 
-#pageCars .leftSidebar .menuItem {
+#pageEditCar .leftSidebar .menuItem {
   width: 100%;
   display: block;
   padding: 11px 24px;
@@ -47,10 +39,10 @@
   text-decoration: none;
   transition: 0.3s ease;
 }
-#pageCars .leftSidebar .menuItem:hover {
+#pageEditCar .leftSidebar .menuItem:hover {
   background: #cfd4ed;
 }
-#pageCars .leftSidebar .menuItemActive {
+#pageEditCar .leftSidebar .menuItemActive {
   width: 100%;
   display: block;
   padding: 11px 24px;
@@ -64,15 +56,15 @@
   text-decoration: none;
   transition: 0.3s ease;
 }
-#pageCars .leftSidebar .menuItemActive:hover {
+#pageEditCar .leftSidebar .menuItemActive:hover {
   color: #140085;
 }
 
-#pageCars .rightContent .breadcrumb {
+#pageEditCar .rightContent .breadcrumb {
   margin-bottom: 27px;
 }
 
-#pageCars .rightContent .breadcrumb .breadcrumbRoot {
+#pageEditCar .rightContent .breadcrumb .breadcrumbRoot {
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
@@ -83,13 +75,13 @@
   margin-bottom: 0px;
 }
 
-#pageCars .rightContent .breadcrumb .breadcrumbArrow {
+#pageEditCar .rightContent .breadcrumb .breadcrumbArrow {
   width: 16px;
   height: 16px;
   margin-right: 4px;
 }
 
-#pageCars .rightContent .breadcrumb .breadcrumbCurrent {
+#pageEditCar .rightContent .breadcrumb .breadcrumbCurrent {
   font-family: "Rubik";
   font-style: normal;
   font-weight: 300;
@@ -99,4 +91,4 @@
   margin-bottom: 0px;
 }
 
-/* End of Page Cars In CSS */
+/* End of Page Edit Car In CSS */

@@ -7,12 +7,16 @@ import "./CarsPage.css";
 import SectionListCar from "../sections/SectionListCar";
 import ChevronRight from "../assets/img/chevron-right.png";
 import AddNewNotification from "../components/AddNewNotification";
+import DeleteNotification from "../components/DeleteNotification";
 
 const CarsPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [addNewStatus, setAddNewStatus] = useState(false);
+  const [deleteStatus, setDeleteStatus] = useState(false);
   let activeClassName = "menuItemActive";
+
+  console.log(location.state);
 
   useEffect(() => {
     if (location.state !== null) {
@@ -20,6 +24,12 @@ const CarsPage = () => {
         setAddNewStatus(location.state.statusAdd);
         setTimeout(() => {
           setAddNewStatus(false);
+        }, 5000);
+      }
+      if ("statusDelete" in location.state) {
+        setDeleteStatus(location.state.statusDelete);
+        setTimeout(() => {
+          setDeleteStatus(false);
         }, 5000);
       }
     }
@@ -43,7 +53,7 @@ const CarsPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [dispatch]);
+  }, [dispatch, deleteStatus]);
   return (
     <main id="pageCars">
       <div className="container-fluid">
@@ -58,6 +68,11 @@ const CarsPage = () => {
             {addNewStatus ? (
               <div className="addNewToast">
                 <AddNewNotification />
+              </div>
+            ) : null}
+            {deleteStatus ? (
+              <div className="addNewToast">
+                <DeleteNotification />
               </div>
             ) : null}
 

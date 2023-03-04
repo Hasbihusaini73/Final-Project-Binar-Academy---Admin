@@ -1,10 +1,10 @@
-/* Start of Component Add New Car Form In CSS */
+/* Start of Component Edit Car Form In CSS */
 
-.addNewCarFormContainer #addNewCarForm .inputContainer {
+.editCarFormContainer #editCarForm .inputContainer {
   margin-bottom: 16px;
 }
 
-.addNewCarFormContainer #addNewCarForm .labelArea label {
+.editCarFormContainer #editCarForm .labelArea label {
   margin-bottom: 0px;
   font-family: "Arial";
   font-style: normal;
@@ -13,11 +13,11 @@
   line-height: 18px;
   color: #3c3c3c;
 }
-.addNewCarFormContainer #addNewCarForm .labelArea label sup {
+.editCarFormContainer #editCarForm .labelArea label sup {
   color: #fa2c5a;
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea input {
+.editCarFormContainer #editCarForm .inputArea input {
   padding: 9px 12px;
   background: #ffffff;
   border: 1px solid #d0d0d0;
@@ -29,11 +29,11 @@
   line-height: 18px;
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea input:focus {
+.editCarFormContainer #editCarForm .inputArea input:focus {
   box-shadow: 0 0 20px -5px rgb(0 0 0 / 25%);
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea input::placeholder {
+.editCarFormContainer #editCarForm .inputArea input::placeholder {
   font-family: "Rubik";
   font-style: normal;
   font-weight: 300;
@@ -43,11 +43,11 @@
 }
 
 /* styling for input type file*/
-.addNewCarFormContainer #addNewCarForm .inputArea .imageInput {
+.editCarFormContainer #editCarForm .inputArea .imageInput {
   display: none;
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea .fileInputFake {
+.editCarFormContainer #editCarForm .inputArea .fileInputFake {
   padding: 9px 12px;
   width: 100%;
   background: #ffffff;
@@ -61,7 +61,7 @@
   color: #8a8a8a;
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea .fileInputFake p {
+.editCarFormContainer #editCarForm .inputArea .fileInputFake p {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -71,7 +71,7 @@
   margin-bottom: 0px;
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea .fileInputFake .uploadIcon {
+.editCarFormContainer #editCarForm .inputArea .fileInputFake .uploadIcon {
   width: 18px;
   height: 18px;
 }
@@ -86,7 +86,7 @@
 }
 /* end of styling for input type file*/
 
-.addNewCarFormContainer #addNewCarForm .inputArea select {
+.editCarFormContainer #editCarForm .inputArea select {
   padding: 9px 12px;
   border: 1px solid #d0d0d0;
   border-radius: 2px;
@@ -97,11 +97,11 @@
   line-height: 18px;
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea select:focus {
+.editCarFormContainer #editCarForm .inputArea select:focus {
   box-shadow: 0 0 20px -5px rgb(0 0 0 / 25%);
 }
 
-.addNewCarFormContainer #addNewCarForm .inputArea select::placeholder {
+.editCarFormContainer #editCarForm .inputArea select::placeholder {
   font-family: "Rubik";
   font-style: normal;
   font-weight: 300;
@@ -110,8 +110,8 @@
   color: #8a8a8a;
 }
 
-.addNewCarFormContainer #addNewCarForm .formSubmit {
+.editCarFormContainer #editCarForm .formSubmit {
   display: none;
 }
 
-/* End of Component Add New Car Form In CSS */
+/* End of Component Edit Car Form In CSS */

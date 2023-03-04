@@ -1,14 +1,44 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./CarCard.css";
 import userIcon from "../assets/img/fi_users.png";
 import clockIcon from "../assets/img/fi_clock.png";
 import trashIcon from "../assets/img/fi_trash-2.png";
 import editIcon from "../assets/img/fi_edit.png";
+import modalDeleteImage from "../assets/img/img-BeepBeep.png";
 
-const carCard = (dataCar) => {
+const CarCard = (dataCar) => {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const car = dataCar.dataCar;
   const date = new Date(car.updatedAt);
+
+  const handleEditButton = () => {
+    navigate("/listcar/editcar", { state: { carId: car.id } });
+  };
+
+  const handleYesDeleteButton = async () => {
+    const urlAPI = "https://bootcamp-rent-cars.herokuapp.com";
+    const config = {
+      headers: {
+        access_token: JSON.parse(localStorage.getItem("accessToken")),
+      },
+    };
+
+    await axios
+      .delete(`${urlAPI}/admin/car/${car.id}`, config)
+      .then(() => {
+        setShow(false);
+        navigate("/listcar", { state: { statusDelete: true } });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <article className="col-lg-4">
@@ -28,18 +58,36 @@ const carCard = (dataCar) => {
           </p>
         </div>
         <div className="cardActionContainer d-flex justify-content-between">
-          <Button className="deleteButton d-flex align-items-center justify-content-center">
+          <Button className="deleteButton d-flex align-items-center justify-content-center" onClick={handleShow}>
             <img src={trashIcon} className="img-fluid" alt="Trash Icon" />
             Delete
           </Button>
-          <Button className="editButton  d-flex align-items-center justify-content-center">
+          <Button className="editButton  d-flex align-items-center justify-content-center" onClick={handleEditButton}>
             <img src={editIcon} className="img-fluid" alt="Edit Icon" />
             Edit
           </Button>
         </div>
       </div>
+
+      <Modal id="modalDelete" show={show} onHide={handleClose} centered>
+        <Modal.Body>
+          <figure className="d-flex justify-content-center">
+            <img src={modalDeleteImage} className="img-fluid deleteModalImage" alt="Mobil Delete"></img>
+          </figure>
+          <h4 className="modalTitle">Menghapus Data Mobil</h4>
+          <p className="modalDesc">Setelah dihapus, data mobil tidak dapat dikembalikan. Yakin ingin menghapus?</p>
+          <div className="modalActionArea d-flex justify-content-center align-items-center gap-3">
+            <Button className="yesButton" onClick={handleYesDeleteButton}>
+              Ya
+            </Button>
+            <Button className="noButton" onClick={handleClose}>
+              Tidak
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </article>
   );
 };
 
-export default carCard;
+export default CarCard;
