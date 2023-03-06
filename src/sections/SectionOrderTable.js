@@ -135,7 +135,7 @@ const SectionOrderTable = () => {
                   </div>
                 </Form>
               </div>
-              <div className="col-lg-6 d-flex justify-content-end rightSide">
+              <div className="col-lg-6 d-flex justify-content-lg-end rightSide">
                 <Pagination id="orderPagination">
                   <Pagination.First />
                   {items}

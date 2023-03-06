@@ -16,8 +16,6 @@ const CarsPage = () => {
   const [deleteStatus, setDeleteStatus] = useState(false);
   let activeClassName = "menuItemActive";
 
-  console.log(location.state);
-
   useEffect(() => {
     if (location.state !== null) {
       if ("statusAdd" in location.state) {

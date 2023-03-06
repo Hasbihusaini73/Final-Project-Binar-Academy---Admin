@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./Header.css";
 import burgerMenu from "../assets/img/fi_menu.png";
 import userImage from "../assets/img/Group 15.png";
+import iconDashboard from "../assets/img/Group 2.png";
+import iconCars from "../assets/img/fi_truck.png";
 
 function OffCanvasExample({ ...props }) {
   const [show, setShow] = useState(false);
@@ -11,39 +13,44 @@ function OffCanvasExample({ ...props }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //note : tidak pakai NavLink/Link karena tidak support scroll to section
+  let activeClassName = " d-flex align-items-center nav-link active";
+
+  const menuItem = [
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      icon: iconDashboard,
+    },
+    {
+      path: "/listcar",
+      name: "Cars",
+      icon: iconCars,
+    },
+  ];
 
   return (
     <>
       <div className="offcanvas-button" data-bs-toggle="offcanvas" role="button">
         <img src={burgerMenu} alt="menu-mobile" onClick={handleShow} />
       </div>
-      <Offcanvas show={show} onHide={handleClose} {...props} className="customOffCanvas" scroll={true}>
-        <Offcanvas.Header closeButton>
-          <h5 className="fw-5">BCR</h5>
+      <Offcanvas id="customOffCanvas" show={show} onHide={handleClose} {...props} className="customOffCanvas" scroll={true}>
+        <Offcanvas.Header closeButton className="btn-close-white">
+          <h5 className="fw-5">BCR Admin</h5>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ul className="navbar-nav ms-auto fs-5 fw-normal">
-            <li className="nav-item" key="offcanvas-1">
-              <a className="nav-link active" aria-current="page" href="#about">
-                Our Services
-              </a>
-            </li>
-            <li className="nav-item" key="offcanvas-2">
-              <a className="nav-link active" href="#whyus">
-                Why Us
-              </a>
-            </li>
-            <li className="nav-item" key="offcanvas-3">
-              <a className="nav-link active" href="#testimonial">
-                Testimonial
-              </a>
-            </li>
-            <li className="nav-item" key="offcanvas-4">
-              <a className="nav-link active" href="#faq">
-                FAQ
-              </a>
-            </li>
+            {menuItem?.map((item, index) => (
+              <li className="nav-item" key={index}>
+                <NavLink to={item.path} className={({ isActive }) => (isActive ? activeClassName : "nav-link d-flex align-items-center")}>
+                  <div className="icon-image">
+                    <img src={item.icon} className="img-fluid" alt="icon-sidebar"></img>
+                  </div>
+                  <div className="menu-title">
+                    <p>{item.name}</p>
+                  </div>
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </Offcanvas.Body>
       </Offcanvas>

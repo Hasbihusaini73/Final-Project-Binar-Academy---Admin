@@ -4,6 +4,10 @@
   padding: 0px;
 }
 
+#sectionListCar .titleArea {
+  margin-bottom: 24px;
+}
+
 #sectionListCar .listCarTitle {
   font-family: "Arial";
   font-style: normal;
@@ -11,7 +15,7 @@
   font-size: 20px;
   line-height: 30px;
   color: #000000;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
 }
 
 #sectionListCar .titleArea .addNewButton {
@@ -66,6 +70,16 @@
 
 #sectionListCar .carCardContainer > article {
   margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 450px) {
+  #sectionListCar .filterArea {
+    margin-bottom: 4px;
+  }
+
+  #sectionListCar .filterArea .buttonFilter {
+    margin-bottom: 20px;
+  }
 }
 
 /* End of Section List Car In CSS */

@@ -91,4 +91,12 @@
   margin-bottom: 0px;
 }
 
+@media only screen and (max-width: 450px) {
+  #pageEditCar .leftSidebar {
+    background: #fff;
+    padding: 35px 0px;
+    min-height: initial;
+  }
+}
+
 /* End of Page Edit Car In CSS */

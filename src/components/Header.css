@@ -88,6 +88,49 @@ html {
   margin-left: 8px;
 }
 
+/*Off Canvas*/
+#customOffCanvas {
+  background-color: #0d28a6;
+}
+
+#customOffCanvas .offcanvas-header h5 {
+  margin-bottom: 0px;
+}
+
+#customOffCanvas .icon-image {
+  margin-right: 15px;
+}
+
+#customOffCanvas .active,
+#customOffCanvas .nav-link:hover {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px 3.5px 10px 3.5px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#customOffCanvas .nav-link {
+  font-family: "Arial";
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px 3.5px 10px 3.5px;
+  margin-bottom: 10px;
+}
+
+#customOffCanvas p {
+  margin-bottom: 0px;
+}
+
 @media only screen and (min-width: 991px) {
   nav#headerNavbar div.offcanvas-button {
   }
@@ -111,6 +154,7 @@ html {
   .customOffCanvas .offcanvas-header {
     padding-bottom: 0px;
     padding-top: 34px;
+    margin-bottom: 30px;
   }
   .customOffCanvas .offcanvas-body {
     padding-top: 0px;
